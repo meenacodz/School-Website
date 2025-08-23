@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School Notes</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 100px; }
+    button { padding: 15px 30px; margin: 10px; font-size: 18px; cursor: pointer; }
+  </style>
+  <link rel="stylesheet" href="style.css">
+  <script src = "script.js"></script>
+</head>
+<body>
+  <h1 class = "main-heading">Govt. Excellence H.S.School Guna</h1>
+  <h2>Choose Medium</h2>
+  <div class = "medium-buttons">
+  <button onclick="openWindow('hindi_med.html')">Hindi Medium</button>
+  <button onclick="openWindow('english_med.html')">English Medium</button>
+</div>
+  <script>
+    function openWindow(page) {
+      window.location.href = page ;
+    }
+  </script>
+</body>
+</html>

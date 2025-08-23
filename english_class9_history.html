@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>School Notes</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+    button { margin: 10px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+  </style>
+  <link rel="stylesheet" href="style.css">
+  <script src = "script.js"></script>
+</head>
+<body>
+  <h1 class="main-heading">Govt. Excellence H.S.School Guna</h1>
+  <h2>Choose Chapter</h2>
+
+  <!-- Example Buttons -->
+   <div class = "chapter-buttons">
+  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_1')">
+    Class 9 Hindi - Math Chapter 1
+  </button>
+
+  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_2')">
+    Class 9 Hindi - Science Chapter 2
+  </button>
+
+  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_3')">
+    Class 10 Hindi - Math Chapter 5
+  </button>
+  </div>
+  <script>
+    function openPDF(url) {
+      // New window with PDF
+      window.location.href = url;
+    }
+  </script>
+
+</body>
+</html>

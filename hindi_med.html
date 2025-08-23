@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hindi Medium - Classes</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 100px; }
+    button { padding: 15px 30px; margin: 10px; font-size: 18px; cursor: pointer; }
+  </style>
+  <link rel="stylesheet" href="style.css">
+  <script src = "script.js"></script>
+</head>
+<body>
+  <h1 class="main-heading"> शासकीय उत्कृष्ट उ. मा. विद्यालय गुना</h1>
+  <h2>कक्षा चुनें</h2>
+  <div class = "medium-buttons">
+  <button onclick="openWindow('hindi_class9.html')">कक्षा 9</button>
+  <button onclick="openWindow('hindi_class10.html')">कक्षा 10</button>
+</div>
+  <script>
+    function openWindow(page) {
+      window.location.href = page;
+    }
+  </script>
+</body>
+</html>

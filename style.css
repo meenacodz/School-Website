@@ -1,0 +1,142 @@
+/* Body background + font */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #121212; /* halka light background */
+  color: #e0e0e0; /* text ka color */
+  margin: 0;
+  padding: 20px;
+}
+
+/* Button container */
+.chapter-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1px; /* thoda sa gap */
+  align-items: flex-start;
+}
+
+/* Button styling */
+.chapter-buttons button {
+  background-color: #1e3a8a;   /* blue background */
+  color: white;               /* white text */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;         /* halka curve */
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s ease-in-out;      /* hover effect smooth */
+}
+
+/* Hover effect */
+.chapter-buttons button:hover {
+  background-color: #2563eb;  /* dark blue */
+  transform: scale(1.1);     /* thoda bada ho jaye hover pe */
+}
+
+.medium-buttons button {
+    background-color: #1e3a8a;
+    color : white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s ease-in-out;
+}
+
+.medium-buttons button:hover {
+    background-color : #2563eb;
+    transform : scale(1.1);
+}
+
+button {
+  position: relative;
+  overflow: hidden;
+  background: #2E7D32;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 200px;
+  transition: background 0.3s ease;
+}
+
+/* Gradient effect container */
+button::before {
+  content: "";
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, transparent 80%);
+  border-radius: 50%;
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+/* Hover par expand */
+button:hover::before {
+  width: 250px;
+  height: 250px;
+}
+
+button {
+  position: relative;
+  overflow: hidden;
+  background: #2E7D32;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 200px;
+  transition: background 0.3s ease;
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple-effect 0.6s linear;
+  background: rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+}
+
+@keyframes ripple-effect {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+button {
+  width: 90%;              /* har screen pe adjust hoga */
+  max-width: 300px;        /* bade screen pe jyada stretch na ho */
+  margin: 8px auto;        /* beech me center align */
+  display: block;          /* ek line me ek button */
+  padding: 12px 16px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg, #4a90e2, #9013fe);
+  color: white;
+  transition: transform 0.2s;
+}
+
+.main-heading {
+  font-size: clamp(24px, 6vw, 40px);
+  font-weight: bold;
+  background: linear-gradient(90deg, #4a90e2, #9013fe);    
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color : transparent;
+  text-align: center;
+  margin-bottom: 20px;
+}
