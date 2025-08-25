@@ -149,7 +149,7 @@ button {
   right: 10px;
   font-family: cursive;
   font-weight: bold;
-  background: linear-gradient(135deg, #4a90e2, #00ff00 );
+  background: linear-gradient(135deg, #d06bff, #00ff00 );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -160,3 +160,4 @@ button {
   z-index: 9999;
   pointer-events: none;
 }
+
