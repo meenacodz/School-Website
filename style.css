@@ -139,4 +139,24 @@ button {
   color : transparent;
   text-align: center;
   margin-bottom: 20px;
+
+}
+
+.watermark {
+  position: fixed;
+  font-size: 25px;
+  bottom: 10px;
+  right: 10px;
+  font-family: cursive;
+  font-weight: bold;
+  background: linear-gradient(135deg, #4a90e2, #00ff00 );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  text-align: center;
+  margin-bottom: 20px;
+  width: auto;
+  z-index: 9999;
+  pointer-events: none;
 }
