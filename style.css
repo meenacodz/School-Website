@@ -67,7 +67,7 @@ h2{
 /* --------------------------------------------------- Button -------------------------------------------------------- */
 
 button{
-  margin: 100px 10px;
+  margin: 30px 10px;
   padding: 15px 40px;
   border: #00ff00 2px solid;
   outline: none;
@@ -451,6 +451,7 @@ border-radius: 50%;
     font-size: 7vw;
   }
 }
+
 
 
 
