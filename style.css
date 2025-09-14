@@ -1,13 +1,17 @@
 /* Body background + font */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #121212; /* halka light background */
-  color: #e0e0e0; /* text ka color */
-  margin: 0;
+html, body {
+  height: auto;
+  overflow: auto;
+  display: block;
+  justify-content:center;
+  align-items: center;
+  background-color: #121212;
+  color: #e0e0e0;
+  margin: 20px;
   padding: 20px;
+  min-height: 100vh;
 }
-
-
+/* --------------------------------------------- Heading --------------------------------------------- */
 .main-heading {
   font-size: clamp(24px, 6vw, 40px);
   font-weight: bold;
@@ -16,131 +20,438 @@ body {
   -webkit-text-fill-color: transparent;
   background-size: 200%;
   background-clip: text;
-  animation: text-gradiant 2.5s linear infinite;
-  color : transparent;
+  animation:  text-gradiant 2.5s linear infinite,
+              in-animation-from-up 1s ease-in-out forwards;
   text-align: center;
   margin-bottom: 20px;
 }
 
+/* -------------------------------------------------- Sub-Heading --------------------------------------------- */
+
+h2{
+  display: block;
+  color: #fff;
+  text-align: center;
+  animation: in-animation 1s ease-in-out forwards ;
+  opacity: 0;
+}
+
+/* ------------------------------------------------ Watermark ----------------------------------------------- */
+
 .watermark {
   position: fixed;
-  font-size: 25px;
+  font-size: 20px;
   bottom: 10px;
   right: 10px;
-  font-family: cursive , "good one";
+  font-family: cursive;
   font-weight: bold;
   background: linear-gradient(to right,#00ffff, #2bff00, #8c00ff, #00FFFF);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 200%;
-  background-clip: text;
-  text-shadow: 0px, 100px , 10px, transparent,
-              0px, 100px, 20px, transparent,
-              0px, 100px, 40px, transparent,
-              0px, 100px, 80px, transparent;
-  animation: text-gradiant 2.5s linear infinite;
-  text-align: center;
-  margin-bottom: 20px;
-  width: auto;
+  animation: 
+    text-gradiant 2.5s linear infinite,
+    in-animation 1s ease-in-out forwards;
+
   z-index: 9999;
   pointer-events: none;
 }
 
-button{
-    padding: 15px 40px;
-    border: none;
-    outline: none;
-    color: #fff;
-    cursor: pointer;
-    position: relative;
-    z-index: 0;
-    border-radius: 12px;   
+@keyframes text-gradiant{
+  0%{background-position: -100%;}
+  50%{background-position: 0%;}
+  100%{background-position: 100%;}
 }
 
-button::after {
+/* --------------------------------------------------- Button -------------------------------------------------------- */
+
+button{
+  margin: 100px 10px;
+  padding: 15px 40px;
+  border: #00ff00 2px solid;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  position: relative;
+  z-index: 0;
+  border-radius: 5px;
+  background-color: #121212;
+  opacity: 0;
+  animation: in-animation 1s ease-in-out forwards;
+}
+
+
+button::after{
   content: "";
   z-index: -1;
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color:#333 ;
+  background-color: #333;
   left: 0;
   top: 0;
-  border-radius: 10px;
+  border-radius: 2px;
 }
+
 
 button::before{
-    content: "";
-    background: linear-gradient(
-        45deg,
-        #ff0000, #ff7300, #fffb00, #48ff00,
-        #00ffd5, #002bff, #ff00c8, #ff0000
-    );
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    background-size: 600%;
-    z-index: -1;
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    filter: blur(5px);
-    animation: glowing 20s linear infinite;
-    transition: opacity .5s ease-in-out;
-    border-radius: 10px;
+  content: "";
+  background: #0f0;
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background-size: 100%;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  transform: perspective(24px) rotateX(45deg) scale(0.8, 0.3);
+  filter: blur(24px);
+  border-radius: 5px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+button:hover{
+  font-weight: bold;
+  color: #000;
+  transition: .5s ease-in-out;
+  box-shadow: 0 0 5px #0f0,
+              0 0 10px #0f0,
+              0 0 20px #0f0,
+              0 0 20px #0f0;
+}
+
+button:hover::after{
+  background-color: #00ff00;
+  transition: .5s ease-in-out;
+}
+
+button:hover::before{
+  opacity: 0.7;
+  transition: opacity .5s ease-in-out;
+}
+
+@keyframes in-animation {
+  0% {
+    transform: translateY(100px);
     opacity: 0;
-}
-
-@keyframes glowing {
-  0% {background-position: 0 0;}
-  50% {background-position: 400% 0;}
-  100% {background-position: 0 0;}
-}
-
-@keyframes text-gradiant {
-  to {
-    background-position: 200%;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
-@keyframes progress-animate {
-  from { width: 0%; }
-  to { width: 100%; }
+@keyframes in-animation-from-up {
+  0%{
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  100%{
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }
 
+/* ------------------------------------------------------- Cube ----------------------------------------------- */
 
-button:hover::before {
-  opacity: 1;
+.cube2{
+  margin: 100px auto;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  transform-style: preserve-3d;
+  transform: rotateX(-30deg);
+  animation: animate-cube 4s linear infinite;
 }
 
-button:active:after {
-  background: transparent;
+@keyframes animate-cube {
+  0%{transform: rotateX(-30deg) rotateY(0deg);}
+  100%{transform: rotateX(-30deg) rotateY(360deg);}
 }
 
-button:active{
-  color: #000000;
-  font-weight: bold;
-}
-
-button .progress-bar {
+.cube2 div{
   position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 4px;
-  width: 0%;
-  background: linear-gradient(
-    90deg,
-    #ff0000, #ff7300, #fffb00, #48ff00,
-    #00ffd5, #002bff, #ff00c8, #ff0000
-  );
-  background-size: 600%;
-  z-index: 1;
-  border-radius: 0 0 10px 10px;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
 }
 
-/* Add this below your glowing ::before rules */
-button.clicked::before {
-  opacity: 1;
+.cube2 div span{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#000000,#ff0000);
+  transform: rotateY(calc(90deg*var(--i))) translateZ(calc(50px));
+
 }
+
+.top2{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 500px;
+  background: #000;
+  transform: rotateX(90deg) translateZ(50px);
+}
+
+.top2::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 0, 0, 0.6);
+  transform: translateZ(-200px);
+  filter: blur(20px);
+  box-shadow: 0 0 120px rgba(255, 0, 0, 0.2),
+  0 0 200px rgba(255, 0, 0, 0.4),
+  0 0 300px rgba(255, 0, 0, 0.6),
+  0 0 400px rgba(255, 0, 0, 0.8),
+  0 0 500px rgb(255, 0, 0);
+}
+
+.cube3{
+  margin: 100px auto;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  transform-style: preserve-3d;
+  transform: rotateX(-30deg);
+  animation: animate-cube 4s linear infinite;
+}
+
+@keyframes animate-cube {
+  0%{transform: rotateX(-30deg) rotateY(0deg);}
+  100%{transform: rotateX(-30deg) rotateY(360deg);}
+}
+
+.cube3 div{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.cube3 div span{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#000000,#00ff00);
+  transform: rotateY(calc(90deg*var(--i))) translateZ(calc(50px));
+
+}
+
+.top3{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 500px;
+  background: #000;
+  transform: rotateX(90deg) translateZ(50px);
+}
+
+.top3::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  background: rgba(0, 255, 0, 0.6);
+  transform: translateZ(-200px);
+  filter: blur(20px);
+  box-shadow: 0 0 120px rgba(0, 255, 0, 0.2),
+  0 0 200px rgba(0, 255, 0, 0.4),
+  0 0 300px rgba(0, 255, 0, 0.6),
+  0 0 400px rgba(0, 255, 0, 0.8),
+  0 0 500px rgb(0, 255, 0);
+}
+
+
+/* ------------------------------------------------------------- Atom -------------------------------------------- */
+
+
+.atom
+{
+  position: relative;
+  display: flex;
+  width: 300px;
+  height: 300px;
+  margin: 200px auto;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.atom::before
+{
+content: '';
+position: absolute;
+width: 20px;
+height: 20px;
+background : transparent;
+box-shadow: inset 0 0 10px #fff;
+border-radius: 50%;
+}
+
+.line
+{
+  margin: 200px auto;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0.7;
+}
+
+.line1
+{
+  color: #40f;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border-bottom: 10px solid #40f;
+  border-top: 10px solid #40f;
+  animation: line-1 2s linear infinite ;
+  filter: drop-shadow(0 0 10px #4400ff);
+}
+
+@keyframes line-1{
+  0%{
+    transform: rotateY(70deg) rotateZ(0deg); 
+  }
+  100%{
+    transform: rotateY(70deg) rotateZ(360deg);
+  }
+}
+
+.line2
+{
+  color: #0f0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border-right: 10px solid #0f0;
+  border-left: 10px solid #0f0;
+  animation: line-2 2s linear infinite;
+  filter: drop-shadow(0 0 10px #0f0);
+}
+
+@keyframes line-2 {
+  0%{
+    transform: rotateX(80deg) rotateY(25deg) rotateZ(0deg);
+  }
+  100%{
+    transform: rotateX(80deg) rotateY(25deg) rotateZ(360deg);
+  }
+}
+
+.line3
+{
+  color: #00ffff;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border-right: 10px solid #00ffff;
+  border-left: 10px solid #00ffff;
+  animation: line-3 2s linear infinite;
+  filter: drop-shadow(0 0 10px #00ffff);
+}
+
+@keyframes line-3 {
+  0%{
+    transform: rotateX(-80deg) rotateY(25deg) rotateZ(0deg);
+  }
+  100%{
+    transform: rotateX(-80deg) rotateY(25deg) rotateZ(360deg);
+  }
+}
+
+
+/* ---------------------------------------- Intro Page ------------------------------------------------------ */
+
+.intro-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;    
+  background-color: #121212;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* ------------------------------------------ Image --------------------------------------------------- */
+
+.pen-image img {
+  max-width: 400px;
+  width: 50vw;
+  height: auto;
+  transform: rotateZ(90deg);
+  animation: intro-pen-animation 5s ease-in-out 1s forwards;
+}
+
+
+@keyframes intro-pen-animation {
+  0% {
+    transform: rotateZ(90deg);
+  }
+  25% {
+    transform: rotateZ(0deg);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-100vh);
+  }
+}
+
+/* ---------------------------------------------------- Text ----------------------------------------------- */
+
+.intro-text h1 {
+  color: #ffff00;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 10vw;
+  margin: 20px 0 0;
+  opacity: 0;
+  animation: intro-text-animation 2s ease-in-out 2.8s forwards;
+  text-align: center;
+}
+
+
+@keyframes intro-text-animation {
+  0% {
+    opacity: 0;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-20vh);
+  }
+}
+
+@media (max-width: 600px) {
+  .pen-image img {
+    width: 50vw;
+    max-width: 200px;
+  }
+  .intro-text h1 {
+    font-size: 7vw;
+  }
+}
+
 
 
 
