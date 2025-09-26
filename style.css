@@ -381,90 +381,121 @@ border-radius: 50%;
 
 /* ---------------------------------------- Intro Page ------------------------------------------------------ */
 
-.intro-container {
+.loading {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;    
-  background-color: #121212;
-  padding: 20px;
-  box-sizing: border-box;
+  height: 100vh;
+  width: 100vw;
 }
 
-/* ---------------------------------------------------- Text ----------------------------------------------- */
 
-.intro-text .D-text {
-  color: #ffff00;
-  background-color: #ff0;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-size: 5vw;
-  width: 10%;
-  margin: 20px 0 0;
+.loading svg path {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+.loading svg path#back {
+  stroke: #ff5c5c57;
+}
+
+
+.loading svg path#front {
+  stroke: #ff0000;
+  stroke-dasharray: 220;
+  stroke-dashoffset: 440;
+  animation: dash_heart 5s linear forwards;
+}
+
+
+.loading svg {
+  animation: fade_up 1s ease-in forwards;
+  animation-delay: 5s; /* Start after heart stroke finishes */
   opacity: 1;
-  animation: intro-d-text-animation 2s ease-in-out forwards,
-              animation2 1s ease-in-out 2.5s forwards;
-  text-align: center;
 }
 
-.intro-container .developer-divyansh-text{
-  color: #FFFF00;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-size: 5vw;
-  margin: 20px 0 0;
-  opacity: 1;
-  animation: intro-developer-text-animation 2s ease-in-out 2s forwards;
-  text-align: center;
-  transform: translateX(1000px);
+
+@keyframes dash_heart {
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
-@keyframes intro-d-text-animation {
+
+@keyframes fade_up {
+  to {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+}
+
+/* -------------------- Textin of intro ----------------- */
+
+
+.text-of-intro {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(to right,#cc00ff,red,#cc00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 18px;
+  white-space: nowrap; 
+  background-size: 200%;
+  animation: intro-text-intro 5s linear forwards,
+              fade-out-text 1s ease-in 5s forwards;
+}
+
+@keyframes fade-out-text{
+  0%{
+    transform: translateY(0px) translateX(-50%);
+    opacity: 1;
+  }
+  100%{
+    transform: translateY(-50px) translateX(-50%);
+    opacity: 0;
+  }
+}
+
+@keyframes intro-text-intro{
+  0%{
+    background-position: -100%;
+  }
+  50%{
+    background-position: 0;
+  }
+  100%{
+    background-position: 100%;
+  }
+}
+
+.last-text-of-intro {
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  transform: translateX(-50%) translateY(110px); /* match animation 0% */
+  text-align: center;
+  font-size: clamp(1.5rem, 5vw, 41px);
+  color: rgb(255, 212, 212);
+  text-shadow: 0 0 12px #f00,
+              0 0 20px #f00;
+
+  opacity: 0;
+  animation: l-t-o-i-animation 1s ease-in-out 5s forwards;
+}
+
+@keyframes l-t-o-i-animation {
   0% {
-    transform: translateX(0px);
-    border-radius: 0%;
+    transform: translateX(-50%) translateY(110px);
+    opacity: 0;
   }
-  20% {
-    transform: translateX(-50px);
-    border-radius: 0%;
-  }
-  50%{
-    transform: translateX(200px);
-    border-radius: 0%;
-  }
-  100%{
-    transform: translateX(100px);
-    border-radius: 50%;
-  }
-}
-
-@keyframes animation2{
-  0%{
-    transform: translateX(100px);
-  }
-  50%{
-    transform: translateX(-20px);
-  }
-  100%{
-    transform: translateX(-20px) translateY(45px);
-    background-color: transparent;
-  }
-}
-
-@keyframes intro-developer-text-animation {
-  0%{
-    transform: translateX(1000px);
-  }
-  100%{
-    transform: translateX(0px);
-  }
-}
-
-@media (max-width: 600px) {
-  .pen-image img {
-    width: 50vw;
-    max-width: 200px;
-  }
-  .intro-text h1 {
-    font-size: 7vw;
+  100% {
+    transform: translateX(-50%) translateY(70px);
+    opacity: 1;
   }
 }
