@@ -5,8 +5,12 @@
   <meta charset="UTF-8">
   <title>School Notes</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
-    button { margin: 10px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    :root{
+      --primary-color : rgb(255, 255, 0);
+      --text-color : rgb(255, 255, 255);
+      --var-c : #121212;
+      --var-d : #333;
+    }
   </style>
   <link rel="stylesheet" href="style.css">
   <script src = "script.js"></script>
@@ -17,21 +21,26 @@
 
   <!-- Example Buttons -->
   <div class = "chapter-buttons">
-  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=1SEuaKa4zZAdA075oprHLrPAqx8Cbv7na')">
-    लोकतंत्र क्या है? लोकतंत्र क्यों?
+  <button onclick="location.href='https://drive.google.com/file/d/1SEuaKa4zZAdA075oprHLrPAqx8Cbv7na/preview'">
+    लोकतंत्र क्या? लोकतंत्र क्यों?
   </button>
 
-  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_2')">
-    अध्याय 2
+  <button onclick="location.href='https://drive.google.com/file/d/1SEuaKa4zZAdA075oprHLrPAqx8Cbv7na/preview'">
+    संविधान निर्माण
   </button>
 
-  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_3')">
-    अध्याय 5
+  <button onclick="location.href='https://drive.google.com/file/d/1SEuaKa4zZAdA075oprHLrPAqx8Cbv7na/preview'">
+    चुनावी राजनीति
+  </button>
+
+  <button onclick="location.href='https://drive.google.com/file/d/1SEuaKa4zZAdA075oprHLrPAqx8Cbv7na/preview'">
+    संस्थाओं का कामकाज
+  </button>
+
+  <button onclick="location.href='https://drive.google.com/file/d/1SEuaKa4zZAdA075oprHLrPAqx8Cbv7na/preview'">
+    लोकतांत्रिक अधिकार
   </button>
 </div>
-
-<div class="watermark">Made By - Developer Divyansh</div>
-  
   <script>
     function openPDF(url) {
       // New window with PDF
@@ -41,5 +50,3 @@
 
 </body>
 </html>
-
-
