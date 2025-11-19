@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +6,12 @@
   <meta charset="UTF-8">
   <title>School Notes</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
-    button { margin: 10px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    :root{
+      --primary-color : rgb(255, 255, 0);
+      --text-color : rgb(255, 255, 255);
+      --var-c : #121212;
+      --var-d : #333;
+    }
   </style>
   <link rel="stylesheet" href="style.css">
   <script src = "script.js"></script>
@@ -18,57 +23,55 @@
   <!-- Example Buttons -->
   <div class="chapter-buttons">
 
-    <button onclick="openPDF('https://drive.google.com/uc?export=download&id=1RMhY878Osc2YoPK1mqKB06ZgTm-GDZlm')">
+    <button onclick="location.href='https://drive.google.com/file/d/1RMhY878Osc2YoPK1mqKB06ZgTm-GDZlm/preview'">
       सांख्य पद्धति
     </button>
     
-    <button onclick="openPDF('https://drive.google.com/uc?export=download&id=1QmcOifzuDNwFRABBODqDeJmrAdJRjq7b')">
+    <button onclick="location.href='https://drive.google.com/file/d/1QmcOifzuDNwFRABBODqDeJmrAdJRjq7b/preview'">
       बहुपद
     </button>
 
-  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_3')">
-    chapter 3
+  <button onclick="location.href='https://drive.google.com/file/d/1QmcOifzuDNwFRABBODqDeJmrAdJRjq7b/preview'">
+    निर्देशांक ज्यामिति
   </button>
   
-  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_3')">
-    Two Variables In Linear Equation
+  <button onclick="location.href='https://drive.google.com/file/d/1QmcOifzuDNwFRABBODqDeJmrAdJRjq7b/preview'">
+    दो चरों वाले रैखिक समीकरण
   </button>
   
-  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_3')">
-    Introduction To Uclids Geometry
+  <button onclick="location.href='https://drive.google.com/file/d/1QmcOifzuDNwFRABBODqDeJmrAdJRjq7b/preview'">
+    यूक्लिड की ज्यामिति का परिचय
   </button>
   
-  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_3')">
-    Lines And Angles
+  <button onclick="location.href='https://drive.google.com/file/d/1QmcOifzuDNwFRABBODqDeJmrAdJRjq7b/preview'">
+    रेखाएँ एवं कोण
   </button>
   
-  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_3')">
-    Triangles
+  <button onclick="location.href='https://drive.google.com/file/d/1QmcOifzuDNwFRABBODqDeJmrAdJRjq7b/preview'">
+    त्रिभुज
   </button>
   
-  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_3')">
-    Quadrilaterals
+  <button onclick="location.href='https://drive.google.com/file/d/1QmcOifzuDNwFRABBODqDeJmrAdJRjq7b/preview'">
+    चतुर्भुज
     
   </button>
   
-  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_3')">
-    Circles
+  <button onclick="location.href='https://drive.google.com/file/d/1QmcOifzuDNwFRABBODqDeJmrAdJRjq7b/preview'">
+    वृत्त
   </button>
   
-  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_3')">
-    Heron's Formula
+  <button onclick="location.href='https://drive.google.com/file/d/1QmcOifzuDNwFRABBODqDeJmrAdJRjq7b/preview'">
+    हीरॉन का सूत्र
   </button>
   
-  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_3')">
-    Surface Area And Volume
+  <button onclick="location.href='https://drive.google.com/file/d/1QmcOifzuDNwFRABBODqDeJmrAdJRjq7b/preview'">
+    प्रष्ठीय क्षेत्रफल और आयतन
   </button>
   
-  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_3')">
-    Analytics
+  <button onclick="location.href='https://drive.google.com/file/d/1QmcOifzuDNwFRABBODqDeJmrAdJRjq7b/preview'">
+    सांख्यिकी
   </button>
   </div>
-
-<div class="watermark">Made By - Developer Divyansh</div>
   
   <script>
     function openPDF(url) {
@@ -79,4 +82,3 @@
 
 </body>
 </html>
-
