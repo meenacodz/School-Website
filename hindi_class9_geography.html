@@ -5,8 +5,12 @@
   <meta charset="UTF-8">
   <title>School Notes</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
-    button { margin: 10px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    :root{
+      --primary-color : rgb(255, 255, 0);
+      --text-color : rgb(255, 255, 255);
+      --var-c : #121212;
+      --var-d : #333;
+    }
   </style>
   <link rel="stylesheet" href="style.css">
   <script src = "script.js"></script>
@@ -17,20 +21,26 @@
 
   <!-- Example Buttons -->
   <div class = "chapter-buttons">
-  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=1RlLv-122dihMrOlqybOXwaXeJrb3FcYj')">
-    भारत - आकार और स्थान
+  <button onclick="location.href='https://drive.google.com/file/d/1RlLv-122dihMrOlqybOXwaXeJrb3FcYj/preview'">
+    भारत — आकार और स्थिति
   </button>
 
-  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=1RnwMCFgfMn0sgNhlZVMjvxBGhZwx8j7S')">
-    भारत की भौतिक विशेषताएँ
+  <button onclick="location.href='https://drive.google.com/file/d/1RnwMCFgfMn0sgNhlZVMjvxBGhZwx8j7S/preview'">
+    भारत का भौतिक स्वरूप
   </button>
 
-  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_3')">
-    अध्याय 5
+  <button onclick="location.href='https://drive.google.com/file/d/1RnwMCFgfMn0sgNhlZVMjvxBGhZwx8j7S/preview'">
+    अपवाह
+  </button>
+
+  <button onclick="location.href='https://drive.google.com/file/d/1RnwMCFgfMn0sgNhlZVMjvxBGhZwx8j7S/preview'">
+    प्राकृतिक वनस्पति तथा वन्य प्राणी
+  </button>
+
+  <button onclick="location.href='https://drive.google.com/file/d/1RnwMCFgfMn0sgNhlZVMjvxBGhZwx8j7S/preview'">
+    जनसंख्या
   </button>
 </div>
-<div class="watermark">Made By - Developer Divyansh</div>
-  
   <script>
     function openPDF(url) {
       // New window with PDF
@@ -40,4 +50,3 @@
 
 </body>
 </html>
-
