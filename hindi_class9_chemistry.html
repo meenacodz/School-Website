@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +6,12 @@
   <meta charset="UTF-8">
   <title>School Notes</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
-    button { margin: 10px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    :root{
+      --primary-color : rgb(255, 255, 0);
+      --text-color : rgb(255, 255, 255);
+      --var-c : #121212;
+      --var-d : #333;
+    }
   </style>
   <link rel="stylesheet" href="style.css">
   <script src = "script.js"></script>
@@ -17,26 +22,30 @@
 
   <!-- Example Buttons -->
    <div class = "chapter-buttons">
-  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=1RW3kfd9NsHo1mKqsoYanm5opLiqZW9Bj')">
-    हमारे आस-पास के पदार्थ
+  <button onclick="location.href='https://drive.google.com/file/d/1RW3kfd9NsHo1mKqsoYanm5opLiqZW9Bj/preview'">
+    हमारे आस–पास के पदार्थ
   </button>
 
-  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=1RLQUtz3u5QofU7818FbzznJMILqO6kGU')">
-    क्या हमारे आस-पास का पदार्थ शुद्ध है ?
+  <button onclick="location.href='https://drive.google.com/file/d/1RLQUtz3u5QofU7818FbzznJMILqO6kGU/preview'">
+    क्या हमारे आस–पास के पदार्थ शुद्ध हैं?
   </button>
 
-  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_3')">
-    अध्याय 5
+  <button onclick="location.href='https://drive.google.com/file/d/1RLQUtz3u5QofU7818FbzznJMILqO6kGU/preview'">
+    परमाणु एवं अणु
   </button>
-     <div class="atom">
+
+  <button onclick="location.href='https://drive.google.com/file/d/1RLQUtz3u5QofU7818FbzznJMILqO6kGU/preview'">
+    परमाणु की संरचना
+  </button>
+</div>
+
+
+<div class="atom">
   <div class="line line1"></div>
   <div class="line line2"></div>
   <div class="line line3"></div>
 </div>
-</div>
 
-<div class="watermark">Made By - Developer Divyansh</div>
-  
   <script>
     function openPDF(url) {
       // New window with PDF
@@ -46,5 +55,3 @@
 
 </body>
 </html>
-
-
