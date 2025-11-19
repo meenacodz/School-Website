@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +6,12 @@
   <meta charset="UTF-8">
   <title>School Notes</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
-    button { margin: 10px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    :root{
+      --primary-color : rgb(255, 255, 0);
+      --text-color : rgb(255, 255, 255);
+      --var-c : #121212;
+      --var-d : #333;
+    }
   </style>
   <link rel="stylesheet" href="style.css">
   <script src = "script.js"></script>
@@ -17,20 +22,26 @@
 
   <!-- Example Buttons -->
    <div class = "chapter-buttons">
-  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=1Sboypjp55NxTO0z776DPLbSEYfJUDP-l')">
+  <button onclick="location.href='https://drive.google.com/file/d/1Sboypjp55NxTO0z776DPLbSEYfJUDP-l/preview'">
     गति
   </button>
 
-  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=1SCVEoC8agDPeQSV-s96nfPXzlLVzwtuR')">
+  <button onclick="location.href='https://drive.google.com/file/d/1SCVEoC8agDPeQSV-s96nfPXzlLVzwtuR/preview'">
     बल तथा गति के नियम
   </button>
 
-  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_3')">
-    अध्याय 5
+  <button onclick="location.href='https://drive.google.com/file/d/1SCVEoC8agDPeQSV-s96nfPXzlLVzwtuR/preview'">
+    गुरुत्वाकर्षण
+  </button>
+
+  <button onclick="location.href='https://drive.google.com/file/d/1SCVEoC8agDPeQSV-s96nfPXzlLVzwtuR/preview'">
+    कार्य तथा ऊर्जा
+  </button>
+
+  <button onclick="location.href='https://drive.google.com/file/d/1SCVEoC8agDPeQSV-s96nfPXzlLVzwtuR/preview'">
+    ध्वनि
   </button>
 </div>
-<div class="watermark">Made By - Developer Divyansh</div>
-  
   <script>
     function openPDF(url) {
       // New window with PDF
@@ -40,4 +51,3 @@
 
 </body>
 </html>
-
