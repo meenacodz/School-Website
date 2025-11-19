@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +6,12 @@
   <meta charset="UTF-8">
   <title>School Notes</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
-    button { margin: 10px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    :root{
+      --primary-color : rgb(255, 255, 0);
+      --text-color : rgb(255, 255, 255);
+      --var-c : #121212;
+      --var-d : #333;
+    }
   </style>
   <link rel="stylesheet" href="style.css">
   <script src = "script.js"></script>
@@ -17,21 +22,22 @@
 
   <!-- Example Buttons -->
    <div class = "chapter-buttons">
-  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=1Ru6OjD2ICdFu0PYr9mYU5TH9ri2aB9v-')">
+  <button onclick="location.href='https://drive.google.com/file/d/1Ru6OjD2ICdFu0PYr9mYU5TH9ri2aB9v-/preview'">
     पालमपुर गाँव की कहानी
   </button>
 
-  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=1SCgwJH2TbsRHXHnCxQU0BP588BVvBmUD')">
+  <button onclick="location.href='https://drive.google.com/file/d/1SCgwJH2TbsRHXHnCxQU0BP588BVvBmUD/preview'">
     संसाधन के रूप में लोग
   </button>
 
-  <button onclick="openPDF('https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_3')">
-    अध्याय 5
+  <button onclick="location.href='https://drive.google.com/file/d/1SCgwJH2TbsRHXHnCxQU0BP588BVvBmUD/preview'">
+    निर्धनता : एक चुनौती
+  </button>
+
+  <button onclick="location.href='https://drive.google.com/file/d/1SCgwJH2TbsRHXHnCxQU0BP588BVvBmUD/preview'">
+    भारत में खाद्य सुरक्षा
   </button>
 </div>
-
-<div class="watermark">Made By - Developer Divyansh</div>
-  
   <script>
     function openPDF(url) {
       // New window with PDF
@@ -41,4 +47,3 @@
 
 </body>
 </html>
-
