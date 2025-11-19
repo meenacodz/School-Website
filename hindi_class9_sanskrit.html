@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +7,12 @@
   <meta charset="UTF-8">
   <title>School Notes</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
-    button { margin: 10px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    :root{
+      --primary-color : rgb(255, 255, 0);
+      --text-color : rgb(255, 255, 255);
+      --var-c : #121212;
+      --var-d : #333;
+    }
   </style>
   <link rel="stylesheet" href="style.css">
   <script src = "script.js"></script>
@@ -28,7 +34,6 @@
   <button onclick="openPDF('https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_3')">
     अध्याय 3
   </button>
-     <div class="watermark">Made By - Developer Divyansh</div>
 </div>
   <script>
     function openPDF(url) {
@@ -39,5 +44,3 @@
 
 </body>
 </html>
-
-
