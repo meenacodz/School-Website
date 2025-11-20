@@ -1,107 +1,98 @@
+// --- ELEMENTS ---
+const menubarBtns = document.querySelectorAll(".menubar-btns");
+const menubarBtnsSpans = document.querySelectorAll(".menubar-btns span");
 
-const menubarBtn1 = document.querySelectorAll(".menubar-btns")[0];
-const menubarBtn2 = document.querySelectorAll(".menubar-btns")[1];
-const menubarBtn3 = document.querySelectorAll(".menubar-btns")[2];
-const menubarBtn4 = document.querySelectorAll(".menubar-btns")[3];
+const closeNavbarButton = document.querySelector(".close-navbar-btn");
+const menubarDiv = document.querySelector(".menubar");
 
-const divNotes = document.querySelector('.notes');
-const divPractice = document.querySelector('.practice');
+const divNotes = document.querySelector(".notes");
+const divPractice = document.querySelector(".practice");
 const divSupport = document.querySelector(".support");
-const divContact = document.querySelector(".contact")
+const divContact = document.querySelector(".contact");
 
 const igCard = document.getElementById("igCard");
 const ytCard = document.getElementById("ytCard");
 
-let selected = 'notes';
-let notes = () => {
-  selected = 'notes';
-  menubarBtn1.style.borderBottom = '5px solid red';
-  menubarBtn1.style.color = 'red';
-
-  menubarBtn2.style.borderBottom = 'none';
-  menubarBtn2.style.color = 'white';
-  menubarBtn3.style.borderBottom = 'none';
-  menubarBtn3.style.color = 'white';
-  menubarBtn4.style.borderBottom = 'none';
-  menubarBtn4.style.color = 'white';
-
-  divNotes.style.display = "block";
-  divPractice.style.display = "none";
-  divSupport.style.display = "none";
-  divContact.style.display = "none";
-}
-let practice = () => {
-  selected = 'practice';
-  menubarBtn2.style.borderBottom = '5px solid red';
-  menubarBtn2.style.color = 'red';
-
-  menubarBtn1.style.borderBottom = 'none';
-  menubarBtn1.style.color = 'white';
-  menubarBtn3.style.borderBottom = 'none';
-  menubarBtn3.style.color = 'white';
-  menubarBtn4.style.borderBottom = 'none';
-  menubarBtn4.style.color = 'white';
-
-  divNotes.style.display = "none";
-  divPractice.style.display = "block";
-  divSupport.style.display = "none";
-  divContact.style.display = "none";
+// --- ACTIVE SPAN COLOR CHANGE ---
+function updateActiveSpan(index) {
+  menubarBtnsSpans.forEach((span, i) => {
+    span.style.color = i === index ? "black" : "white";
+  });
 }
 
-let support = () => {
-  selected = 'support';
-  menubarBtn3.style.borderBottom = '5px solid red';
-  menubarBtn3.style.color = 'red';
+// --- PAGE SWITCHING ---
+const pages = {
+  notes: divNotes,
+  practice: divPractice,
+  support: divSupport,
+  contact: divContact
+};
 
-  menubarBtn2.style.borderBottom = 'none';
-  menubarBtn2.style.color = 'white';
-  menubarBtn1.style.borderBottom = 'none';
-  menubarBtn1.style.color = 'white';
-  menubarBtn4.style.borderBottom = 'none';
-  menubarBtn4.style.color = 'white';
+function show(pageName) {
 
-  divNotes.style.display = "none";
-  divPractice.style.display = "none";
-  divSupport.style.display = "flex";
-  divContact.style.display = "none";
+  Object.keys(pages).forEach(name => {
+
+    // Notes, Practice, Contact → display block  
+    if (name === pageName && name !== "support") {
+      pages[name].style.display = "block";
+    }
+
+    // Support page → display flex  
+    else if (name === pageName && name === "support") {
+      pages[name].style.display = "flex";
+    }
+
+    // All others hide
+    else {
+      pages[name].style.display = "none";
+    }
+  });
+
+  // Update span color when switching pages
+  updateActiveSpan(
+    pageName === "notes"   ? 0 :
+    pageName === "practice"? 1 :
+    pageName === "support" ? 2 :
+    pageName === "contact" ? 3 : 0
+  );
 }
-let contact = () => {
-  selected = 'contact';
-  menubarBtn4.style.borderBottom = '5px solid red';
-  menubarBtn4.style.color = 'red';
 
-  menubarBtn2.style.borderBottom = 'none';
-  menubarBtn2.style.color = 'white';
-  menubarBtn3.style.borderBottom = 'none';
-  menubarBtn3.style.color = 'white';
-  menubarBtn1.style.borderBottom = 'none';
-  menubarBtn1.style.color = 'white';
+// --- EVENT LISTENERS ---
+menubarBtns[0].addEventListener("click", () => show("notes"));
+menubarBtns[1].addEventListener("click", () => show("practice"));
+menubarBtns[2].addEventListener("click", () => show("support"));
+menubarBtns[3].addEventListener("click", () => show("contact"));
 
-  divNotes.style.display = "none";
-  divPractice.style.display = "none";
-  divSupport.style.display = "none";
-  divContact.style.display = "block";
+show("notes");  // default screen
+
+
+// --- CARD EXPAND ANIMATION ---
+ytCard.addEventListener("click", () => ytCard.classList.toggle("expanded"));
+igCard.addEventListener("click", () => igCard.classList.toggle("expanded"));
+
+
+// --- NAVBAR TOGGLE ---
+let navbarShown = true;
+
+function navbarFunction() {
+
+  if (!navbarShown) {
+    menubarDiv.style.width = "200px";
+
+    menubarBtns.forEach(btn => btn.style.width = "200px");
+    menubarBtnsSpans.forEach(span => span.style.display = "block");
+
+    closeNavbarButton.style.backgroundImage = `url("close.png")`;
+    closeNavbarButton.style.marginLeft = '150px';
+  } else {
+    menubarDiv.style.width = "50px";
+
+    menubarBtns.forEach(btn => btn.style.width = "50px");
+    menubarBtnsSpans.forEach(span => span.style.display = "none");
+
+    closeNavbarButton.style.backgroundImage = `url("navbar.png")`;
+    closeNavbarButton.style.marginLeft = "10px";
+  }
+
+  navbarShown = !navbarShown;
 }
-
-menubarBtn1.addEventListener("click", notes);
-menubarBtn2.addEventListener("click", practice);
-menubarBtn3.addEventListener("click", support);
-menubarBtn4.addEventListener("click", contact);
-
-notes();
-
-
-
-
-
-
-
-ytCard.addEventListener("click", () => {
-  ytCard.classList.toggle("expanded");
-});
-
-
-
-igCard.addEventListener("click", () => {
-  igCard.classList.toggle("expanded");
-});
