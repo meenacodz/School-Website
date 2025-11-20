@@ -202,7 +202,7 @@ button:hover::before {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url('youtube.png');
+  background-image: url("https://res.cloudinary.com/devpcp7mz/image/upload/v1763648538/ytb_dtv7bd.png");
   color: black;
   transform: rotateY(calc(90deg*var(--i))) translateZ(calc(50px));
 }
@@ -597,7 +597,7 @@ button:hover::before {
   border-radius: 25px;
   margin-top: 10px;
   cursor: default;
-  background-image: url("navbar.png");
+  background-image: url("https://res.cloudinary.com/devpcp7mz/image/upload/v1763648536/navbar_bltx2l.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -937,3 +937,4 @@ body::-webkit-scrollbar {
     height: 100px;
   }
 }
+
