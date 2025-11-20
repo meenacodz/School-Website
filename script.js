@@ -82,7 +82,7 @@ function navbarFunction() {
     menubarBtns.forEach(btn => btn.style.width = "200px");
     menubarBtnsSpans.forEach(span => span.style.display = "block");
 
-    closeNavbarButton.style.backgroundImage = `url("close.png")`;
+    closeNavbarButton.style.backgroundImage = `url("https://res.cloudinary.com/devpcp7mz/image/upload/v1763648385/close_cta8ge.png")`;
     closeNavbarButton.style.marginLeft = '150px';
   } else {
     menubarDiv.style.width = "50px";
@@ -90,9 +90,10 @@ function navbarFunction() {
     menubarBtns.forEach(btn => btn.style.width = "50px");
     menubarBtnsSpans.forEach(span => span.style.display = "none");
 
-    closeNavbarButton.style.backgroundImage = `url("navbar.png")`;
+    closeNavbarButton.style.backgroundImage = `url("https://res.cloudinary.com/devpcp7mz/image/upload/v1763648536/navbar_bltx2l.png")`;
     closeNavbarButton.style.marginLeft = "10px";
   }
 
   navbarShown = !navbarShown;
 }
+
