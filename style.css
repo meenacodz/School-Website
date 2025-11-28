@@ -562,7 +562,7 @@ button:hover::before {
   max-width: 200px;
   min-width: 60px;
   height: 100vh;
-  background: linear-gradient(#c0f,#0ff,#c0f);
+  background: linear-gradient(#c0f,#0ff);
   animation: in-animation-from-up 1s ease-in-out forwards;
   z-index: 9999;
   transition: .5s ease-out;
@@ -618,8 +618,8 @@ button:hover::before {
 
 .menubar-btns img {
   position: absolute;
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   left: 5px;
   top: 10px;
   pointer-events: auto;
@@ -937,6 +937,7 @@ body::-webkit-scrollbar {
     height: 100px;
   }
 }
+
 
 
 
