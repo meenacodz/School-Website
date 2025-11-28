@@ -560,7 +560,7 @@ button:hover::before {
   left: 0;
   width: 50px;
   max-width: 200px;
-  min-width: 50px;
+  min-width: 60px;
   height: 100vh;
   background: linear-gradient(#c0f,#0ff,#c0f);
   animation: in-animation-from-up 1s ease-in-out forwards;
@@ -937,6 +937,7 @@ body::-webkit-scrollbar {
     height: 100px;
   }
 }
+
 
 
 
