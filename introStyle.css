@@ -1,0 +1,107 @@
+html, body{
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.intro-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    background-color: #bebebe;
+}
+
+
+.intro-container .main-ele {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 400px;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro-container .main-ele .img-div img {
+    width: 250px;
+    height: 250px;
+    animation: animation1 2.5s ease-out forwards;
+}
+
+.intro-container .main-ele .text-div h2 {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 24px;
+    width: 400px;
+    margin: -2px 0;
+    opacity: 0;
+    animation: animation2 1.2s ease-out forwards 2.5s;
+}
+
+@keyframes animation1 {
+    0%{
+        opacity: 0;
+        transform: translateY(-200px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes animation2 {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    width: 50px;
+    height: 100vh;
+    z-index: 999;
+    opacity: 0.2;
+    pointer-events: none;  
+    animation: sideGlow 1.3s ease-in-out forwards 3.7s;
+}
+
+body::before {
+    left: 0;
+    background: rgba(0, 238, 255, 0.7);  
+    filter: blur(40px);
+}
+
+body::after {
+    right: 0;
+    background: rgba(255, 0, 179, 0.7);  
+    filter: blur(40px);
+}
+
+@keyframes sideGlow {
+    0% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 1;
+    }
+    60%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0.3;
+    }
+}
