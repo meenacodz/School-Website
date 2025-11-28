@@ -72,7 +72,7 @@ igCard.addEventListener("click", () => igCard.classList.toggle("expanded"));
 
 
 // --- NAVBAR TOGGLE ---
-let navbarShown = true;
+let navbarShown = false;
 
 function navbarFunction() {
 
@@ -96,4 +96,5 @@ function navbarFunction() {
 
   navbarShown = !navbarShown;
 }
+
 
