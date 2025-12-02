@@ -955,6 +955,7 @@ body::-webkit-scrollbar {
 
 /* Description Text */
 .photo-desc {
+  font-family: Arial, Helvetica, sans-serif;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1032,6 +1033,7 @@ body::-webkit-scrollbar {
     height: 100px;
   }
 }
+
 
 
 
