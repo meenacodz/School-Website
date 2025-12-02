@@ -9,9 +9,13 @@ const divNotes = document.querySelector(".notes");
 const divPractice = document.querySelector(".practice");
 const divSupport = document.querySelector(".support");
 const divContact = document.querySelector(".contact");
+const divGallery = document.querySelector(".gallery");
 
 const igCard = document.getElementById("igCard");
 const ytCard = document.getElementById("ytCard");
+
+
+const cards = document.querySelectorAll(".photo-card");
 
 // --- ACTIVE SPAN COLOR CHANGE ---
 function updateActiveSpan(index) {
@@ -25,7 +29,8 @@ const pages = {
   notes: divNotes,
   practice: divPractice,
   support: divSupport,
-  contact: divContact
+  contact: divContact,
+  gallery: divGallery
 };
 
 function show(pageName) {
@@ -53,7 +58,8 @@ function show(pageName) {
     pageName === "notes"   ? 0 :
     pageName === "practice"? 1 :
     pageName === "support" ? 2 :
-    pageName === "contact" ? 3 : 0
+    pageName === "contact" ? 3 :
+    pageName === "gallery" ? 4 : 0
   );
 }
 
@@ -62,6 +68,7 @@ menubarBtns[0].addEventListener("click", () => show("notes"));
 menubarBtns[1].addEventListener("click", () => show("practice"));
 menubarBtns[2].addEventListener("click", () => show("support"));
 menubarBtns[3].addEventListener("click", () => show("contact"));
+menubarBtns[4].addEventListener("click", () => show("gallery"));
 
 show("notes");  // default screen
 
@@ -98,3 +105,26 @@ function navbarFunction() {
 }
 
 
+
+let activeCard = null;
+
+cards.forEach(card => {
+  card.addEventListener("click", () => {
+
+    // If clicking same card → close it
+    if (activeCard === card) {
+      card.classList.remove("active");
+      activeCard = null;
+      return;
+    }
+
+    // Remove active from previous
+    if (activeCard) {
+      activeCard.classList.remove("active");
+    }
+
+    // Activate new one
+    card.classList.add("active");
+    activeCard = card;
+  });
+});
