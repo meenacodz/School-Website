@@ -904,6 +904,95 @@ body::-webkit-scrollbar {
 }
 
 
+.gallery {
+  display: none;
+  width: 100%;
+  background: #121212;
+  padding: 10px 0;
+  animation: in-animation 1s forwards;
+}
+
+/* Masonry Grid */
+.gallery-masonry {
+  column-count: 3;
+  column-gap: 18px;
+  padding: 15px;
+}
+
+/* Each Photo Card */
+.photo-card {
+  position: relative;
+  width: 100%;
+  margin-bottom: 18px;
+  break-inside: avoid;
+  cursor: pointer;
+}
+
+/* Image */
+.photo-card img {
+  width: 100%;
+  border-radius: 16px;
+  background: #222;
+  display: block;
+  transition: 
+    opacity 0.28s ease,
+    transform 0.28s ease,
+    filter 0.28s ease;
+}
+
+/* Hover effect like Bing */
+.photo-card img:hover {
+  transform: scale(1.04);
+  filter: brightness(1.15);
+}
+
+/* Activated Image */
+.photo-card.active img {
+  opacity: 0.2;
+  transform: scale(1.02);
+  filter: brightness(0.9);
+}
+
+/* Description Text */
+.photo-desc {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  transform: translate(-50%, -50%) scale(0.95);
+  text-align: center;
+  color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s ease;
+  font-family: system-ui;
+}
+
+.photo-card.active .photo-desc {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Responsive Columns */
+@media (max-width: 1200px) {
+  .gallery-masonry {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-masonry {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-masonry {
+    column-count: 1;
+  }
+}
+
+
 @keyframes in-animation {
   0% {
     transform: translateY(100px);
@@ -943,6 +1032,7 @@ body::-webkit-scrollbar {
     height: 100px;
   }
 }
+
 
 
 
