@@ -1,71 +1,95 @@
-html, body{
+html, body {
     overflow: hidden;
     margin: 0;
     padding: 0;
+    height: 100%;
+    background: #000;
 }
 
+/* MAIN WRAPPER */
 .intro-container {
+    position: relative;
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
     height: 100vh;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    margin: 0;
-    background-color: #bebebe;
 }
 
+/* GIF LAYER */
+.rp-container {
+    position: absolute;  /* sits on top initially */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    animation: hideGIF 0.8s ease-out forwards 2s; /* hides after 2.5 sec */
+}
 
-.intro-container .main-ele {
+.rp-container img {
+    width: 200px;
+}
+
+.rp-container h3{
+    font-family: Arial, Helvetica, sans-serif;
+    color: azure;
+    font-size: 25px;
+}
+
+/* MAIN CONTENT */
+.main-ele {
+    position: absolute;
+    opacity: 0;
     display: flex;
     flex-direction: column;
-    width: 400px;
-    height: 400px;
-    background-color: transparent;
-    padding: 0;
-    margin: 0;
     justify-content: center;
     align-items: center;
+    animation: showMain 1s ease-out forwards 3s; /* appears after gif */
 }
 
-.intro-container .main-ele .img-div img {
+.main-ele .img-div img {
     width: 250px;
     height: 250px;
-    animation: animation1 2.5s ease-out forwards;
+    animation: animation1 2s ease-out forwards;
 }
 
-.intro-container .main-ele .text-div h2 {
-    display: block;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
+.main-ele .text-div h2 {
+    font-family: Arial, sans-serif;
     font-size: 24px;
-    width: 400px;
+    text-align: center;
     margin: -2px 0;
     opacity: 0;
-    animation: animation2 1.2s ease-out forwards 2.5s;
+    animation: animation2 1.2s ease-out forwards 4.5s;
+    color: azure;
+}
+
+.text-div h2:last-child {
+    color: #8BE2FF;
+}
+
+/* --- ANIMATIONS --- */
+
+@keyframes hideGIF {
+    100% { opacity: 0; }
+}
+
+@keyframes showMain {
+    100% { opacity: 1; }
 }
 
 @keyframes animation1 {
-    0%{
-        opacity: 0;
-        transform: translateY(-200px);
-    }
-    100%{
-        opacity: 1;
-        transform: translateY(0px);
-    }
+    0% { opacity: 0; transform: translateY(-200px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes animation2 {
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
+    100% { opacity: 1; }
 }
 
-
+/* SIDE GLOW (same as your original) */
 body::before,
 body::after {
     content: "";
@@ -75,33 +99,25 @@ body::after {
     height: 100vh;
     z-index: 999;
     opacity: 0.2;
-    pointer-events: none;  
-    animation: sideGlow 1.3s ease-in-out forwards 3.7s;
+    pointer-events: none;
+    animation: sideGlow 1.3s ease-in-out forwards 5.5s;
 }
 
 body::before {
     left: 0;
-    background: rgba(0, 238, 255, 0.7);  
+    background: rgba(0, 238, 255, 0.7);
     filter: blur(40px);
 }
 
 body::after {
     right: 0;
-    background: rgba(255, 0, 179, 0.7);  
+    background: rgba(255, 0, 179, 0.7);
     filter: blur(40px);
 }
 
 @keyframes sideGlow {
-    0% {
-        opacity: 0;
-    }
-    40% {
-        opacity: 1;
-    }
-    60%{
-        opacity: 1;
-    }
-    100%{
-        opacity: 0.3;
-    }
+    0% { opacity: 0.2; }
+    40% { opacity: 1; }
+    60% { opacity: 1; }
+    100% { opacity: 0.3; }
 }
