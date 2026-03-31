@@ -92,7 +92,8 @@ function loadNotices(snapshot) {
         if (isLoggedIn) {
 
             const delBtn = document.createElement("button");
-            delBtn.innerText = "Delete";
+            delBtn.innerHTML = "<i class='bx bxs-trash' ></i>";
+            delBtn.className = "delete-btn";
 
             delBtn.onclick = () => {
                 if (confirm("Delete this notice?")) {
@@ -338,7 +339,7 @@ function closeNoticeWindow() {
     noticeOverlay.style.display = "none";
 }
 
-closeNotice.addEventListener("click", closeNoticeWindow);
+// closeNotice.addEventListener("click", closeNoticeWindow);
 noticeOverlay.addEventListener("click", closeNoticeWindow);
 
 
@@ -416,7 +417,8 @@ onValue(ref(db, "notices"), (snapshot) => {
         if (isLoggedIn) {
 
             const delBtn = document.createElement("button");
-            delBtn.innerText = "Delete";
+            delBtn.innerHTML = "<i class='bx bxs-trash' ></i>";
+            delBtn.className = "delete-btn";
 
             delBtn.onclick = () => {
                 if (confirm("Delete this notice?")) {
