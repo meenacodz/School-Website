@@ -14,6 +14,7 @@
     </style>
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script type="module" src="firebase.js"></script>
 </head>
 
 <body>
@@ -208,9 +209,6 @@
     </div>
 
     <!-- Overlay -->
-    <div id="noticeOverlay" class="notice-overlay"></div>
-
-    <!-- Notice Popup -->
     <div id="noticePopup" class="notice-popup">
 
         <div class="notice-header">
@@ -218,6 +216,13 @@
             <button id="closeNotice">&times;</button>
         </div>
 
+        <!-- ADD NOTICE -->
+        <div id="noticeAddBox" class="notice-add">
+            <textarea id="noticeInput" placeholder="Write notice here..."></textarea>
+            <button id="addNoticeBtn">Add Notice</button>
+        </div>
+
+        <!-- NOTICE LIST -->
         <div id="noticeList" class="notice-list">
             <!-- notices yaha load honge -->
         </div>
@@ -230,7 +235,7 @@
         }
     </script>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 
 </body>
 
