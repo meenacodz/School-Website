@@ -1,9 +1,10 @@
+// ---IMPORTS---
+// import { db, ref, push, onValue } from "./firebase.js";
+
+
 // --- ELEMENTS ---
 const menubarBtns = document.querySelectorAll(".menubar-btns");
 const menubarBtnsSpans = document.querySelectorAll(".menubar-btns span");
-
-const closeNavbarButton = document.querySelector(".close-navbar-btn");
-const menubarDiv = document.querySelector(".menubar");
 
 const divNotes = document.querySelector(".notes");
 const divPractice = document.querySelector(".practice");
@@ -68,10 +69,57 @@ function show(pageName) {
 
 // ----------------------------- Teacher Login -------------------
 
+let isLoggedIn = false;
+
+function loadNotices(snapshot) {
+
+    noticeList.innerHTML = "";
+
+    snapshot.forEach((child) => {
+
+        const data = child.val();
+        const key = child.key;
+
+        const div = document.createElement("div");
+        div.className = "notice";
+
+        const text = document.createElement("span");
+        text.innerText = data.message;
+
+        div.appendChild(text);
+
+        // 👇 DELETE BUTTON (sirf login pe)
+        if (isLoggedIn) {
+
+            const delBtn = document.createElement("button");
+            delBtn.innerText = "Delete";
+
+            delBtn.onclick = () => {
+                if (confirm("Delete this notice?")) {
+                    remove(ref(db, "notices/" + key));
+                }
+            };
+
+            div.appendChild(delBtn);
+        }
+
+        noticeList.prepend(div);
+
+    });
+}
+
+let currentSnapshot = null;
+
+onValue(ref(db, "notices"), (snapshot) => {
+    currentSnapshot = snapshot;
+    loadNotices(snapshot);
+});
+
+
 let authorization = {
     "8839501811": 'kohinoor'
 };
-let isLoggedIn = false;
+
 
 
 const overlay = document.getElementById("overlay");
@@ -99,29 +147,43 @@ function login() {
 
         isLoggedIn = true;
 
-        editNoticeBtn.style.display = "block";
-        editNoticeBtn.style.borderTopLeftRadius = "0";
-        editNoticeBtn.style.borderBottomLeftRadius = "0";
-        editNoticeBtn.style.borderLeft = 'none';
+        if (currentSnapshot) {
+            loadNotices(currentSnapshot); // 🔥 refresh
+        }
 
-        menubarBtns[4].querySelector("i").classList.replace("bx-user", "bxs-user-check");
+        const number = numberInput.value;
+        const password = passwordInput.value;
 
-        showNoticeBtn.style.borderTopRightRadius = "0";
-        showNoticeBtn.style.borderBottomRightRadius = "0";
-        showNoticeBtn.style.borderRight = 'none';
+        if (authorization[number] && authorization[number] === password) {
 
-        passwordInput.value = "";
-        numberInput.value = "";
+            isLoggedIn = true;
 
-        loginPopup.style.display = "none";
-        overlay.style.display = "none";
+            editNoticeBtn.style.display = "block";
+            editNoticeBtn.style.borderTopLeftRadius = "0";
+            editNoticeBtn.style.borderBottomLeftRadius = "0";
+            editNoticeBtn.style.borderLeft = 'none';
 
-    } else {
-        passwordInput.value = "";
-        alert("Wrong Number or Password");
+            menubarBtns[4].querySelector("i").classList.replace("bx-user", "bxs-user-check");
+
+            showNoticeBtn.style.borderTopRightRadius = "0";
+            showNoticeBtn.style.borderBottomRightRadius = "0";
+            showNoticeBtn.style.borderRight = 'none';
+
+            passwordInput.value = "";
+            numberInput.value = "";
+
+            loginPopup.style.display = "none";
+            overlay.style.display = "none";
+
+        } else {
+            passwordInput.value = "";
+            alert("Wrong Number or Password");
+        }
+
     }
-
 }
+
+
 
 const logoutPopup = document.getElementById("logoutPopup");
 const confirmLogout = document.getElementById("confirmLogout");
@@ -135,6 +197,11 @@ function showLogoutPage() {
 confirmLogout.addEventListener("click", () => {
 
     isLoggedIn = false;
+
+    if (currentSnapshot) {
+        loadNotices(currentSnapshot); // 🔥 refresh
+    }
+
 
     menubarBtns[4].querySelector("i").classList.replace("bxs-user-check", "bx-user");
 
@@ -206,9 +273,6 @@ menubarBtns[3].addEventListener("click", () => show("gallery"));
 show("notes");  // default screen
 
 
-// --- CARD EXPAND ANIMATION ---
-ytCard.addEventListener("click", () => ytCard.classList.toggle("expanded"));
-igCard.addEventListener("click", () => igCard.classList.toggle("expanded"));
 
 
 // --- NAVBAR TOGGLE ---
@@ -240,23 +304,139 @@ cards.forEach(card => {
 
 
 
+
+
+// <--- NOTICES FUNCTIONALTITY --->
+// Firebase import
+import { db, ref, push, onValue, remove } from "./firebase.js";
+
 const noticePopup = document.getElementById("noticePopup");
-const noticeOverlay = document.getElementById("noticeOverlay");
+const noticeOverlay = document.getElementById("overlay");
 const closeNotice = document.getElementById("closeNotice");
 
-// show notice window
-showNoticeBtn.addEventListener("click",()=>{
+const noticeInput = document.getElementById("noticeInput");
+const addNoticeBtn = document.getElementById("addNoticeBtn");
+const noticeList = document.getElementById("noticeList");
+const noticeAddBox = document.getElementById("noticeAddBox");
+
+
+// OPEN POPUP
+showNoticeBtn.addEventListener("click", () => {
 
     noticePopup.style.display = "flex";
     noticeOverlay.style.display = "block";
 
+    // hide add notice section
+    noticeAddBox.style.display = "none";
+
 });
 
-// close notice
-closeNotice.addEventListener("click",closeNoticeWindow);
-noticeOverlay.addEventListener("click",closeNoticeWindow);
 
-function closeNoticeWindow(){
+// CLOSE POPUP
+function closeNoticeWindow() {
     noticePopup.style.display = "none";
     noticeOverlay.style.display = "none";
 }
+
+closeNotice.addEventListener("click", closeNoticeWindow);
+noticeOverlay.addEventListener("click", closeNoticeWindow);
+
+
+// ADD NOTICE
+addNoticeBtn.addEventListener("click", () => {
+
+    const text = noticeInput.value.trim();
+
+    if (!text) return;
+
+    push(ref(db, "notices"), {
+        message: text,
+        time: Date.now()
+    });
+
+    noticeInput.value = "";
+
+});
+
+
+function getSmartTime(timestamp) {
+
+    const date = new Date(timestamp);
+    const now = new Date();
+
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const yesterday = new Date(today);
+    yesterday.setDate(today.getDate() - 1);
+
+    const noticeDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+    const time = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+    if (noticeDate.getTime() === today.getTime()) {
+        return "Today • " + time;
+    }
+
+    if (noticeDate.getTime() === yesterday.getTime()) {
+        return "Yesterday • " + time;
+    }
+
+    return date.toLocaleDateString([], { day: 'numeric', month: 'short' }) + " • " + time;
+}
+
+// REALTIME NOTICE LOAD
+onValue(ref(db, "notices"), (snapshot) => {
+
+    noticeList.innerHTML = "";
+
+    snapshot.forEach((child) => {
+
+        const data = child.val();
+        const key = child.key;
+
+        const div = document.createElement("div");
+        div.className = "notice";
+
+        const content = document.createElement("div");
+        content.className = "notice-content";
+
+        const text = document.createElement("div");
+        text.className = "notice-text";
+        text.innerText = data.message;
+
+        const time = document.createElement("div");
+        time.className = "notice-time";
+        time.innerText = getSmartTime(data.time);
+
+        content.appendChild(text);
+        content.appendChild(time);
+
+        div.appendChild(content);
+
+        // DELETE BUTTON (teacher only)
+        if (isLoggedIn) {
+
+            const delBtn = document.createElement("button");
+            delBtn.innerText = "Delete";
+
+            delBtn.onclick = () => {
+                if (confirm("Delete this notice?")) {
+                    remove(ref(db, "notices/" + key));
+                }
+            };
+
+            div.appendChild(delBtn);
+        }
+
+        noticeList.prepend(div);
+
+    });
+
+});
+
+editNoticeBtn.addEventListener("click", () => {
+
+    noticePopup.style.display = "flex";
+    noticeAddBox.style.display = "flex";
+    noticeOverlay.style.display = "block";
+
+});
