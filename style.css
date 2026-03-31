@@ -567,7 +567,7 @@ button:hover {
     background: none;
     backdrop-filter: blur(10px);
     animation: in-animation-from-up 1s ease-in-out forwards;
-    z-index: 9999;
+    z-index: 800;
     transition: .5s ease-out;
     border-right: 5px solid rgba(255, 255, 255, 0.2);
 }
@@ -1174,16 +1174,27 @@ body::-webkit-scrollbar {
 }
 
 .delete-btn{
-    background: red;
+    background: transparent;
     border: none;
-    padding: 6px 10px;
-    color: white;
-    border-radius: 5px;
     cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: auto;
+    height: auto;
+    padding: 4px;
+
+    font-size: 18px;
+    color: #ff4d4d;
+
+    flex-shrink: 0;   /* flex container me compress hone se bachata hai */
 }
 
 .delete-btn:hover{
-    background: #ff3333;
+    color:#ff0000;
+    background-color: transparent;
 }
 
 #noticeInput{
@@ -1199,8 +1210,41 @@ body::-webkit-scrollbar {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+#addNoticeBtn{
+    background:transparent;
+    border:none;
+    cursor:pointer;
 
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
+    padding:8px;
+    font-size:20px;
+}
+
+#addNoticeBtn{
+    width: auto;
+    min-width: 40px;
+
+    flex: 0 0 auto;   /* flex container me stretch hone se rokta hai */
+
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+}
+
+#noticeInput{
+    flex:1;
+}
+
+#noticeAddBox{
+    display:flex;
+    gap:10px;
+}
 
 
 
@@ -1220,9 +1264,6 @@ body::-webkit-scrollbar {
 /* ================= RESPONSIVE FIX ================= */
 
 /* Universal responsive fix */
-* {
-    max-width: 100%;
-}
 
 /* Images responsive */
 img {
@@ -1404,5 +1445,46 @@ button {
         width: 150px;
         height: 150px;
     }
+
+}
+
+
+@media (max-width:600px){
+
+.notice-popup{
+    width:95vw;
+    max-height:80vh;
+    padding:15px;
+}
+
+}
+
+.notice{
+flex-direction:row;
+gap:10px;
+}
+
+.notice-content{
+width:100%;
+}
+
+@media (max-width:600px){
+
+.delete-btn{
+font-size:16px;
+padding:2px;
+}
+
+}
+
+@media (max-width:600px){
+
+.menubar{
+width:55px;
+}
+
+.menubar-btns{
+font-size:1.4rem;
+}
 
 }
